@@ -1,0 +1,105 @@
+<?php 
+	include "scr/classes/codehl.class.php";
+	$code = new CodeHL();
+?>
+<section class="content">
+	<article>
+		<header class="article_h">
+			<h1>swIMG</h1>
+			<h3 class="subheadline">Examples</h3>
+		</header>
+		<script src="./apis/swIMG/swIMG.js"></script>
+		<style>
+			.swIMG {
+				margin:0;
+				padding:0;	
+			}
+			.sw_image {
+				width:143px;
+				height:70px;
+				display:inline-block;
+				cursor:pointer;
+			}
+			.sw_image:hover {
+				opacity:0.8;
+			}
+			.sw_image:nth-child(1) {background:url('./demos/swIMG/_img/small/small_e.jpg')}
+			.sw_image:nth-child(2) {background:url('./demos/swIMG/_img/small/small_x.jpg')}
+			.sw_image:nth-child(3) {background:url('./demos/swIMG/_img/small/small_a.jpg')}
+			.sw_image:nth-child(4) {background:url('./demos/swIMG/_img/small/small_m.jpg')}
+			.sw_image:nth-child(5) {background:url('./demos/swIMG/_img/small/small_p.jpg')}
+			.sw_image:nth-child(1n) {
+				background-size: cover;
+			}
+		</style>
+		<br><br>
+		<p class="text">
+			<h3>Background-Image Extraction</h3><br>
+			<br>
+			Div elements extracted from <strong>background-image</strong>.<br>
+			<br>
+		</p>
+		<div class="swIMG">
+			<div class="sw_image"></div>
+			<div class="sw_image"></div>
+			<div class="sw_image"></div>
+			<div class="sw_image"></div>
+			<div class="sw_image"></div>
+		</div>
+		<br>
+		<button class="vcode">View Code</button>
+		<div class="toggleCode">
+		<?php
+$code->code('
+  <script src="./apis/swIMG/swIMG.js"></script>
+  
+  <style>
+    .swIMG {
+      margin: 0;
+      padding: 0;	
+    }
+    .sw_image {
+      width: 143px;
+      height: 70px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .sw_image:hover {
+      opacity: 0.8;
+    }
+    .sw_image:nth-child(1) {background: url("./demos/swIMG/_img/small/small_e.jpg")}
+    .sw_image:nth-child(2) {background: url("./demos/swIMG/_img/small/small_x.jpg")}
+    .sw_image:nth-child(3) {background: url("./demos/swIMG/_img/small/small_a.jpg")}
+    .sw_image:nth-child(4) {background: url("./demos/swIMG/_img/small/small_m.jpg")}
+    .sw_image:nth-child(5) {background: url("./demos/swIMG/_img/small/small_p.jpg")}
+    .sw_image:nth-child(1n) {
+      background-size: cover;
+    }
+  </style>
+  
+  <div class="swIMG">
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+  </div>
+  
+  <script>swIMG();</script>
+ ');
+		?>
+		</div>
+		<br><br>
+		<h3>See other examples</h3>
+		<ul class="topics">
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_img">Images extracted from image</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_bg">Images extracted from background-image</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_sm">Method <strong>'small'</strong> for thumbnail source</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_lrg">Method <strong>'large'</strong> for larger images with a specified folder</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_lim">Example of a limited image count </a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_inc">Example of an increment</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_vis">Visual changes</a></li>
+		</ul>
+		<script>swIMG();</script>
+	</article>
+</section>

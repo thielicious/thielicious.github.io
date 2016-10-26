@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Windows version 5.0.0">
+  <title>swIMG Demo - Background-URL (URL Extraction)</title>
+  <meta charset="utf-8">
+  <script src="jq.js">
+  </script>
+  <script src="swIMG.js">
+  </script>
+  <style type="text/css">
+  div.swIMG,h2{width:1030px;margin:0 auto}*{margin:0;font-family:Tahoma}div.swIMG{height:auto;padding:0}div.swIMG .sw_image{width:200px;height:150px;display:inline-block;border:1px solid #000;cursor:pointer}div.swIMG .sw_image:hover{opacity:.8}div.swIMG .sw_image:nth-child(1){background:url("img/lions.jpg")}div.swIMG .sw_image:nth-child(1){background:url("img/sunset.jpg")}div.swIMG .sw_image:nth-child(1){background:url("img/clouds.jpg")}div.swIMG .sw_image:nth-child(1){background:url("img/surfing.jpg")}div.swIMG .sw_image:nth-child(1){background:url("img/puzzle.jpg")}div.swIMG .sw_image:nth-child(2){background:url("img/lions.jpg")}div.swIMG .sw_image:nth-child(2){background:url("img/sunset.jpg")}div.swIMG .sw_image:nth-child(2){background:url("img/clouds.jpg")}div.swIMG .sw_image:nth-child(2){background:url("img/surfing.jpg")}div.swIMG .sw_image:nth-child(2){background:url("img/puzzle.jpg")}div.swIMG .sw_image:nth-child(3){background:url("img/lions.jpg")}div.swIMG .sw_image:nth-child(3){background:url("img/sunset.jpg")}div.swIMG .sw_image:nth-child(3){background:url("img/clouds.jpg")}div.swIMG .sw_image:nth-child(3){background:url("img/surfing.jpg")}div.swIMG .sw_image:nth-child(3){background:url("img/puzzle.jpg")}div.swIMG .sw_image:nth-child(4){background:url("img/lions.jpg")}div.swIMG .sw_image:nth-child(4){background:url("img/sunset.jpg")}div.swIMG .sw_image:nth-child(4){background:url("img/clouds.jpg")}div.swIMG .sw_image:nth-child(4){background:url("img/surfing.jpg")}div.swIMG .sw_image:nth-child(4){background:url("img/puzzle.jpg")}div.swIMG .sw_image:nth-child(5){background:url("img/lions.jpg")}div.swIMG .sw_image:nth-child(5){background:url("img/sunset.jpg")}div.swIMG .sw_image:nth-child(5){background:url("img/clouds.jpg")}div.swIMG .sw_image:nth-child(5){background:url("img/surfing.jpg")}div.swIMG .sw_image:nth-child(5){background:url("img/puzzle.jpg")}h2{display:block}
+  </style>
+  <script>
+  $(function() {
+    $.fn.bg = function(url) {
+        this.css('backgroundImage','url("img/'+url+'")');
+    };
+    $('.sw_image:eq(0)').bg('lions.jpg');
+    $('.sw_image:eq(1)').bg('sunset.jpg');
+    $('.sw_image:eq(2)').bg('clouds.jpg');
+    $('.sw_image:eq(3)').bg('surfing.jpg');
+    $('.sw_image:eq(4)').bg('puzzle.jpg');
+  });
+  </script>
+</head>
+<body>
+  <br>
+  <h2>
+  <script>
+  $('h2').text(document.title);
+  </script></h2><br>
+  <div class="swIMG">
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+    <div class="sw_image"></div>
+  </div>
+  <script>
+  swIMG();
+  </script>
+</body>
+</html>

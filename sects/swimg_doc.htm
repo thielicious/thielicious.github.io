@@ -1,0 +1,274 @@
+<?php 
+	include "scr/classes/codehl.class.php";
+	$code = new CodeHL();
+	$code::color("yellow");
+	$code::weight(3);
+?>
+<section class="content">
+	<article>
+		<header class="article_h">
+			<h1>swIMG</h1>
+			<h3 class="subheadline">Documentation</h3>
+		</header>
+		<br>
+		<ul class="topics">
+			<li>&#187 <a class="txt_lnk" href="#intro">Introduction</a></li>
+			<li>&#187 <a class="txt_lnk" href="#setup">Setup Information</a></li>
+			<li>&#187 <a class="txt_lnk" href="#config">Configuration</a></li>
+			<li>&#187 <a class="txt_lnk" href="#usage">Usage</a></li>
+			<li>&#187 <a class="txt_lnk" href="#demos">Examples</a></li>
+		</ul>
+		<br><br><br>
+		<h3 id="intro">INTRODUCTION</h3><br><br>
+		<p class="text">
+			Built with JavaScript 1.8.5(ECMAScript 5, issued on January 20th 2016)<br>
+			Free Licence: click <a class="txt_lnk" href="?goto=swimg_lic">LICENCE</a> for more information.<br>
+			<br>	
+			<strong>swIMG</strong> ('sw': abbr. for 'switch') is a fullsize image viewer for a specified 
+			thumbnail gallery which instantly works right after implementation. <br><br>
+			<h1 class="quote"><em>'Straight to the point.'</em></h1>
+			<br>This simple gallery is an alternative contrast to the overwhelmingly complicated and slow-loading gallery APIs in the rest of the web. 
+			By standard, it extracts the image source of the thumbnails and shows them in fullsize. This script can 
+			be easily adjusted in the <a class="txt_lnk" href="#config">configuration</a>.<br>
+		</p>
+	</article>
+	<br>
+	<article>
+		<h3 id="setup">SETUP INFORMATION</h3><br><br>
+		<p class="text">
+			swIMG is not a stand-alone API, it uses <strong>JQuery</strong> syntax. This library is required in order to run swIMG. Click to download:<br>
+			<br>
+			- <a class="txt_lnk" href="https://jquery.com/download/">JQuery v1.8+</a><br> 
+			<br>
+			Optionally, the additional PlugIn <strong>jgestures</strong> for mobile control can be embedded into the DOM. There is no configuration needed. 
+			This PlugIn is not required - once jgestures is detected it will be applied immediately for default mobile control. Click to download:<br>
+			<br>
+			- <a class="txt_lnk" href="https://jgestures.codeplex.com/releases/view/117280">jgestures v0.90.1</a><br> 
+			<br>
+			Download the newest version of swIMG:<br>
+			<br>
+			- <a class="txt_lnk soon" href="?goto=swimg_dls">swIMG v0.92 Beta</a><br>
+			<br>
+			For an overview of all versions and bug fixes please check the <a class="txt_lnk" href="?goto=swimg_clog">Changelog</a>.<br>
+			<br><br>
+			1. Once all necessary files have been downloaded, simply embed these in your <strong>&lt;head></strong> element of your page.<br>
+<?=
+$code->code('
+	<head>
+	  <script src="scripts/jquery.js"></script>
+	  <script src="scripts/jgestures.js"></script> <-- optional
+	  <script src="scripts/swIMGv091.js"></script>
+	</head>
+	','jquery.js','swIMGv091.js');
+?>
+			2. Next, execute <strong>swIMG()</strong> at the bottom of your HTML code. For example, after the closing tag <strong>&lt;/html></strong> or <strong>&lt;/body></strong>. 
+			It is necessary due to triggered elements which first have to be DOM-ready.<br>				
+<?=
+$code->code('
+	  </body>
+	  <script> swIMG(); </script>
+	</html>
+	', 'swIMG();');
+?>
+			3. At last, the gallery as a parent container must be specified with the class name <strong>swIMG</strong> as well as the thumbnails with the name <strong>sw_image</strong>.<br>
+<?=
+$code->code('
+	<div class="swIMG">
+	  <img src="images/clouds.jpg" class="sw_image"/>
+	  <img src="images/trees.jpg" class="sw_image"/>
+	  <img src="images/cats.jpg" class="sw_image"/>
+	</div>
+	', 'swIMG', 'sw_image');
+?>
+			When these class elements have not been found, a notification alert will pop up reminding you to fix it. After this implementation it's ready 
+			to perform. Simply click on any of the thumbnails. Feel free to check out the <a class="txt_lnk" href="#demos">Examples</a> for a live demonstration.<br>
+		</p>	
+	</article>
+	<br>
+	<article>
+		<h3 id="config">CONFIGURATION</h3><br><br>
+		<p class="text">
+			First off, it is important to know that swIMG performs <strong>2 methods</strong> of how the fullsize images will be displayed: 
+			<strong>'small'</strong> and <strong>'large'</strong>. With these you determine whether you want the small thumbnails to be loaded 
+			inside the gallery or larger images from a given filepath. Certain parameters depend on which method you choose. By default, all parameters 
+			are set for <strong>small</strong> thumbnails.<br>
+			All other parameters can be configured through <a class="txt_lnk" href="#direct_config">Direct Configuration</a> within the function.<br>
+			<br>
+			<br>
+			<h4>[method]<br><span class="def_conf">default: 'small'</span></h4>
+			As explained above, display methods for images in the gallery.<br>
+			   <li>&#187 choose <strong>'small'</strong> if you want to display the image source from the thumbnails</li> 
+			   <li>&#187 choose <strong>'large'</strong> if you would like to display large images from a given path</li>
+			<br>
+			<h4>[imagePath]<br><span class="def_conf">default: no path defined</span></h4>
+			When method is set to <strong>'large'</strong>, it is required to specify the path to your image folder for the large images. <br>
+			<br>
+			<h4>[parent]<br><span class="def_conf">default: '.swIMG'</span></h4>
+			Defines the parent class element (container/wrapper) which includes all thumbnails.<br>
+			<br>
+			<h4>[thumbs]<br><span class="def_conf">default: '.sw_image'</span></h4>
+			Class element for the thumbnails<br>
+			<br>
+			<h4>[count]<br><span class="def_conf">default: 'auto'</span></h4>
+			Determines how many thumbnails will be applied to run with swIMG.<br>
+			   <li>&#187 choose <strong>'auto'</strong> if you want all thumbnails to be applied within the parent container</li>
+			   <li>&#187 set an <strong>integer</strong> to apply only a specified amount (eg: <strong>count : 8,</strong>)</li>
+			<br>
+			<h4>[mobile]<br><span class="def_conf">default: '640px'</span></h4>
+			Sets the width for mobile devices. When triggered, following responsive adjustments will occur:<br>
+			   <li>&#187 arrows and close buttons will be deactivated</li>
+			   <li>&#187 images in the gallery view will be fit to screen</li>
+			   <li>&#187 (mobile swipe control will be activated if <strong>jgestures.js</strong> is embedded, see 
+			   <a class="txt_lnk" href="#setup">Setup Information</a>)</li>
+			<br>
+			<h4>[maxSize]<br><span class="def_conf">default: '100%'</span></h4>
+			Maximum size of images in fullsize for mobile devices. By default it's 100%.<br>
+			<br>
+			<h4>[minSize]<br><span class="def_conf">default: '80%'</span></h4>
+			Fullsize images will be resized at 80% (default) of the original size for desktop devices<br>
+			<br>
+			<h4>[bgcolor]<br><span class="def_conf">default: '0,0,0'</span></h4> 
+			Background color of the image viewer. To change the color use this syntax: <strong>R,G,B</strong>.<br> eg. <strong>bgcolor: '255,0,0'</strong> for red.<br>
+			<br>
+			<h4>[opacity]<br><span class="def_conf">default: '0.8'</span></h4>
+			Sets the opacity for the background of the viewer, by default it's 0.8. Range is from 0-1 transparent to full.<br>
+			<br>
+			<h4>[arrowColor]<br><span class="def_conf">default: 'grey'</span></h4>
+			Color for the arrow buttons.<br>
+			<br>
+			<h4>[arrowColorHover]<br><span class="def_conf">default: 'white'</span></h4>
+			Color for the mouseover effect on the arrows.<br>
+			<br>
+			<h4>[closeColor]<br><span class="def_conf">default: 'grey'</span></h4>
+			Color for the close button (x).<br>
+			<br>
+			<h4>[closeColorHover]<br><span class="def_conf">default: 'white'</span></h4>
+			Color for the mouseover effect on the close button (x).<br>
+			<br>
+			<h4>[increment]<br><span class="def_conf">default: 'false'</span></h4>
+			Only if the method is set to <strong>'large'</strong>, huge amount of large images in a folder with increasing numbers can 
+			be applied and viewed in fullsize (<strong>1.jpg, 2.jpg, 3.jpg etc</strong>). Very useful, if the thumbnail count is limited for 
+			some reason. For a demo to this please see <a class="txt_lnk" href="#demos">Examples</a>.<br>
+				<li>&#187 choose <strong>true</strong> in order to activate this parameter to display numbered images</li>
+				<li>&#187 choose <strong>false</strong> if you want to show individual names in <strong>'LargeImages'</strong> see below</li> 
+			<br>
+			<h4>[LargeImages]<br><span class="def_conf">default: no images are defined</span></h4>
+			Method must be set to <strong>'large'</strong> and increment to <strong>'false'</strong> for this parameter. This is an array containing image files 
+			with individual names. Make sure that you have <strong>imagePath</strong> parameter defined for the image folder.<br>
+			It could look something like this:<br>
+<?=
+$code->code('
+	LargeImages: [	
+	  "clouds.jpg",
+	  "trees.jpg",
+	  "cats.jpg"
+	];
+	');
+?>
+			The index starts from <strong>1</strong>, which means that the first thumbnail will show <strong>'clouds.jpg'</strong>, next one <strong>'trees.jpg'</strong> and so on.  
+			An example to this can be viewed <a class="txt_lnk" href="#demos">here</a>.<br>
+			<br>
+			<br>
+			<h4 id="direct_config">Direct Configuration</h4><br>
+			Parameters can be configured within the parentheses of the function <strong>swIMG()</strong>. For a demonstration, two examples can be seen below.<br>
+			<br>
+			If you would like to <strong>adjust the colors</strong> of some elements, do it like the following:<br>
+<?=
+$code->code('
+	swIMG({
+	  bgColor: "0,100,100",
+	  opacity: "0.9",
+	  arrowColor: "white",
+	  closeColorHover: "red"
+	});
+	');
+?>
+			And if you wish to change configuration for <strong>large</strong> images:<br>
+<?=
+$code->code('
+	swIMG({
+	  method: "large",
+	  imagePath: "img/large/",
+	  LargeImages: [
+	    "clouds.jpg",
+	    "trees.jpg",
+	    "cats.jpg"
+	  ]
+	});
+	');
+?>
+			<br>
+			For <strong>small</strong> thumbnails there is no configuration needed, as it's already in the default settings.
+		</p>	
+	</article>
+	<br>
+	<article>
+		<h3 id="usage">USAGE</h3><br><br>
+		<p class="text">
+			Currently, the increment only works for images with the extension <strong>JPG</strong>. There will be more extensions available in the next updates. As of now, swIMG is able to extract
+			the image path from <strong>&lt;img></strong> tags and from <strong>Background Images</strong>.<br><br>
+			<br>
+			<h4>SRC-Extraction</h4>
+<?=
+$code->code('
+	<div class="swIMG">
+	  <img src="images/clouds.jpg" class="sw_image"/>
+	  <img src="images/trees.jpg" class="sw_image"/>
+	  <img src="images/cats.jpg" class="sw_image"/>
+	</div>
+	');
+?>
+			In the <a class="txt_lnk" href="#setup">Setup Information</a> you see an example of thumbnails with image sources attached inside a <strong>&lt;img></strong> element. 
+			The code above is by far the most used pattern. swIMG extracts the image path out of the <strong>SRC</strong> attribute.<br><br>
+			<br>
+			<h4>Background-Extraction:</h4>
+<?=
+$code->code("
+	.sw_image {
+	  &:nth-child {
+	    &(1) { background: url('images/clouds.jpg') } 
+	    &(2) { background: url('images/trees.jpg') }
+	    &(3) { background: url('images/cats.jpg') }
+	  }
+	}
+	");
+$code->code('
+	<div class="swIMG">
+	  <div class="sw_image"></div>
+	  <div class="sw_image"></div>
+	  <div class="sw_image"></div>
+	</div>
+	');
+?>
+			In some cases, thumbnail images are often placed in the background of an element. For example using CSS. However, swIMG can extract these as well.<br><br>
+			<br>
+			<br>
+			Once the class swIMG is implemented, it will check which element the class <strong>sw_image</strong> is added to. This could be any block element
+			with a modified background-style using CSS, just as <strong>&lt;div>, &lt;li></strong> or <strong>&lt;nav></strong> etc.<br><br>
+			<br>
+			<h4>Control:</h4><br>
+			By a simple click swIMG will perform and the image viewer opens. There are three kinds of switch control to the next and previous image:<br>
+			<br>
+			<li>&#187 <strong>Visual Interface</strong>: <br>&nbsp;&nbsp;&nbsp;Arrows and close button to switch to next and previous images and close the gallery</li>
+			<li>&#187 <strong>Keyboard Control</strong>: <br>&nbsp;&nbsp;&nbsp;Arrow keys left and right for switching</li>
+			<li>&#187 <strong>Mobile Control</strong>: <br>&nbsp;&nbsp;&nbsp;Swipe control to the left and right. (<strong>jgestures.js</strong> is required, see 
+			<a class="txt_lnk" href="#setup">Setup Information</a>)</li>
+		</p>
+	</article>
+	<br>
+	<article>
+		<h3 id="demos">EXAMPLES</h3><br><br>
+		<p class="text">
+			Demos of different adjustments:<br>
+			<br>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_img">Images extracted from image</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_bg">Images extracted from background-image</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_sm">Method <strong>'small'</strong> for thumbnail source</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_lrg">Method <strong>'large'</strong> for larger images with a specified folder</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_lim">Example of a limited image count </a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_inc">Example of an increment</a></li>
+			<li>&#187 <a class="txt_lnk" href="?goto=swimg_demo_vis">Visual changes</a></li>
+			<br>
+		</p>	
+	</article>
+</section>

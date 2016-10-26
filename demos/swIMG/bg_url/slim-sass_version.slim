@@ -1,0 +1,66 @@
+doctype html
+html
+	head
+		title swIMG Demo - Background-URL (URL Extraction)
+		meta charset="utf-8"
+	script src="jq.js"
+	script src="swIMG.js"
+	sass:
+		%center 
+			width: 1030px
+			margin: 0 auto
+		$images: ('img/lions.jpg','img/sunset.jpg','img/clouds.jpg','img/surfing.jpg','img/puzzle.jpg')
+		@mixin bg-url($count) 
+			@for $i from 1 through $count 
+				@each $img in $images 
+					&:nth-child(#{$i}) 
+						background: url('#{$img}')
+		* 
+			margin: 0
+			font-family: Tahoma
+		div 
+			&.swIMG 
+				@extend %center
+				height: auto
+				padding: 0
+
+				.sw_image 
+					width: 200px
+					height: 150px
+					display: inline-block
+					border: 1px solid #000
+					cursor: pointer
+
+					&:hover 
+						opacity: 0.8
+
+					@include bg-url(5)
+		h2 
+			@extend %center
+			display: block
+	javascript:
+		$(function() {
+			$.fn.bg = function(url) {
+				this.css('backgroundImage','url("img/'+url+'")');
+			};
+			$('.sw_image:eq(0)').bg('lions.jpg');
+			$('.sw_image:eq(1)').bg('sunset.jpg');
+			$('.sw_image:eq(2)').bg('clouds.jpg');
+			$('.sw_image:eq(3)').bg('surfing.jpg');
+			$('.sw_image:eq(4)').bg('puzzle.jpg');
+		});
+	body
+		br
+		h2
+			javascript:
+				$('h2').text(document.title);
+		br
+		.swIMG
+			.sw_image 
+			.sw_image
+			.sw_image
+			.sw_image
+			.sw_image
+javascript:
+	swIMG();
+
