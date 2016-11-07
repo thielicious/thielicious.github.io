@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>swIMG Demo - Large Images</title>
+		<meta charset="utf-8">
+		<script src="../jq.js"></script>
+		<script src="../swIMG.js"></script>
+	</head>
+	<style>
+		*{	
+			margin:0;
+			font-family:Tahoma;
+		}
+		.swIMG {
+			width:1030px;
+			height:auto;
+			margin:0 auto;
+			padding:0;	
+		}
+		.sw_image {
+			width:200px;
+			height:150px;
+			display:inline-block;
+			border:1px solid #000;
+			cursor:pointer;
+		}
+		.sw_image:hover {
+			opacity:0.8;
+		}
+		h2 {
+			display:block;
+			margin:0 auto;
+			width:1030px;
+		}
+	</style>
+	<body>
+		<br>
+		<h2><script>$('h2').text(document.title);</script></h2><br>
+		<div class="swIMG">	
+			<img src="../_img/small/puzzle.jpg" class="sw_image">
+			<img src="../_img/small/surfing.jpg" class="sw_image">
+			<img src="../_img/small/clouds.jpg" class="sw_image">
+			<img src="../_img/small/sunset.jpg" class="sw_image">
+			<img src="../_img/small/lions.jpg" class="sw_image">
+		</div>
+	</body>
+</html>
+<script>
+	swIMG({
+		method: 'large',
+		imagePath: '../_img/large/',
+		LargeImages: [
+			'large_e.jpg',
+			'large_x.jpg',
+			'large_a.jpg',
+			'large_m.jpg',
+			'large_p.jpg'
+		]
+	});
+</script>
