@@ -1,7 +1,7 @@
 /*
 		
 		
-		swIMG v0.91 (c) 2016 by Michel Thiel 
+		swIMG v0.92 (c) 2016 by Michel Thiel 
 		----------------------
 		m.thiel@claxdesign.com
 		www.claxdesign.com 
@@ -53,7 +53,7 @@
 					return defaultVal;
 				}
 			};
-				
+			
 				
 			var cfg_default = {
 				
