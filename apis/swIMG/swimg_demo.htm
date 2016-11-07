@@ -1,0 +1,70 @@
+<script>
+	toggleCode();
+</script>
+<article>
+	<header class="article_h">
+		<h1>swIMG</h1>
+		<h3 class="subheadline">Examples</h3>
+	</header>
+	<script src="apis/swIMG/final/swIMG.js"></script>
+	<style>
+		.swIMG {
+			margin:0;
+			padding:0;	
+		}
+		.sw_image {
+			width:143px;
+			display:inline-block;
+			cursor:pointer;
+		}
+		.sw_image:hover {
+			opacity:0.8;
+		}
+	</style>
+	<br><br>
+	<p class="text">
+		<h3>Image SRC Extraction</h3><br>
+		<br>
+		This is a standard pattern, which simply extracts the image source out of the thumbnails
+  		and displays them in fullview.<br>
+	</p><br>
+	<div class="swIMG">	
+		<img src="./demos/swIMG/_img/small/small_e.jpg" class="sw_image">
+		<img src="./demos/swIMG/_img/small/small_x.jpg" class="sw_image">
+		<img src="./demos/swIMG/_img/small/small_a.jpg" class="sw_image">
+		<img src="./demos/swIMG/_img/small/small_m.jpg" class="sw_image">
+		<img src="./demos/swIMG/_img/small/small_p.jpg" class="sw_image">
+	</div>
+	<script>swIMG();</script>
+	<br>
+	<button class="vcode">View Code</button>
+	<div class="toggleCode">
+		<div id="code">
+			<pre>
+				<code>
+  &lt;script src="apis/swIMG/swIMG.js">&lt;/script>
+  
+  &lt;div class="swIMG">	
+    &lt;img src="./demos/swIMG/_img/small/small_e.jpg" class="sw_image">
+    &lt;img src="./demos/swIMG/_img/small/small_x.jpg" class="sw_image">
+    &lt;img src="./demos/swIMG/_img/small/small_a.jpg" class="sw_image">
+    &lt;img src="./demos/swIMG/_img/small/small_m.jpg" class="sw_image">
+    &lt;img src="./demos/swIMG/_img/small/small_p.jpg" class="sw_image">
+  &lt;/div>
+  
+  &lt;script>swIMG();&lt;/script>
+				</code>
+			</pre>
+		</div>
+	</div>
+	<br><br>
+	<h3>See other examples (<i style="font-size: 0.8em">CodePen.io</i>)</h3>
+	<ul class="topics">
+		<li>&#187 <a class="txt_lnk" target="_blank" href="http://codepen.io/thielicious/pen/wzLRvO">Images extracted thumbnails</a></li>
+		<li>&#187 <a class="txt_lnk" target="_blank" href="http://codepen.io/thielicious/pen/YGopzm">Images extracted from background</a></li>
+		<li>&#187 <a class="txt_lnk" target="_blank" href="http://codepen.io/thielicious/pen/dpBQoX">Images from a directory</a></li>
+		<li>&#187 <a class="txt_lnk" target="_blank" href="http://codepen.io/thielicious/pen/KgjbRM">Limited image count</a></li>
+		<li>&#187 <a class="txt_lnk" target="_blank" href="http://codepen.io/thielicious/pen/rMEoMj">Image increment</a></li>
+		<li>&#187 <a class="txt_lnk" target="_blank" href="http://codepen.io/thielicious/pen/RGzEmz">Visual changes</a></li>
+	</ul>
+</article>

@@ -1,0 +1,38 @@
+<script>
+	var content = new LnkGen($('.topics li a'));
+	content.setContent($('section.content'));
+	content.setPath('apis/swIMG/');
+	content.getTo(0,'swimg_doc.htm');
+	content.getTo(1,'swimg_clog.htm');
+	content.getTo(2,'swimg_dls.htm');
+	content.getTo(3,'swimg_demo.htm');
+	content.getTo(4,'swimg_lic.htm');
+	activeLnk('ov');
+	var lnks = new TxtLnk('section.content','apis/swIMG/');
+	lnks.click(['swimg_demo']);
+</script>
+<article>
+	<header class="article_h">
+		<h1>swIMG</h1>
+		<h3 class="subheadline">Overview</h3>
+	</header>
+	<br><br>
+	<p class="text">
+		<strong>swIMG</strong> ('sw': abbr. for 'switch') is a fullsize image viewer for a specified 
+		thumbnail gallery which instantly works right after implementation. <br>
+		For a livedemo: see <a class="txt_lnk swimg_demo" href="#">EXAMPLES</a><br><br>
+		<h1 class="quote"><em>'Straight to the point.'</em></h1>
+		<br>This simple and slim gallery is an alternative contrast to the overwhelmingly complicated and slow-loading gallery APIs in the rest of the web. 
+		By standard, it extracts the image source of the thumbnails and shows them in fullsize. This script can 
+		be easily adjusted in the configuration.<br>
+	</p>
+	<br><br>
+	<h3>Click below for more information</h3>
+	<ul class="topics">
+		<li><a class="txt_lnk ov" href="#">Documentation</a></li>
+		<li><a class="txt_lnk ov" href="#">Changelog</a></li>
+		<li><a class="txt_lnk ov" href="#">Download</a></li>
+		<li><a class="txt_lnk ov" href="#">Examples</a></li>
+		<li><a class="txt_lnk ov" href="#">Licence</a></li>
+	</ul>
+</article>
