@@ -16,7 +16,7 @@ $(function() {
 	stay();																// prevents scrolling to the top
 	toggleCode();														// toggle code preview
 	
-	$('a[href="#!abc"]').on('click', function() {
+	$('a[href="/#!abc"]').on('click', function() {
 		alert('test');
 	});
 });
