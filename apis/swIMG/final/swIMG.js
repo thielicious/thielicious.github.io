@@ -34,8 +34,9 @@
 		
 		
 			
-		swIMG = function(cfg = null) {																	
-
+	swIMG = function(cfg = null) {	
+	
+		window.onload = function() {
 			
 			// ---------- Configuration ----------
 			
@@ -482,4 +483,5 @@
 					}
 				})
 			}
-		};
+		}
+	}

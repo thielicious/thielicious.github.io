@@ -69,14 +69,13 @@
 		</code>
 		</pre>
 		</div>
-		2. Next, execute <strong>swIMG()</strong> at the bottom of your HTML code. For example, after the closing tag <strong>&lt;/html></strong> or <strong>&lt;/body></strong>. 
-		It is necessary due to triggered elements which first have to be DOM-ready.<br>				
+		2. Next, execute <strong>swIMG()</strong> at the top of your HTML code. For example, after or inside the <strong>&lt;/head></strong> tag.<br>				
 		<div id="code">
 		<pre>
 		<code>
-	  &lt;/body>
-	  &lt;script> swIMG(); &lt;/script>
-	&lt;/html>
+	&lt;/head>
+	&lt;script> swIMG(); &lt;/script>
+	&lt;body>
 		</code>
 		</pre>
 		</div>
