@@ -8,8 +8,14 @@
 	content.getTo(3,'swimg_demo.htm');
 	content.getTo(4,'swimg_lic.htm');
 	activeLnk('ov');
+
 	var lnks = new TxtLnk('section.content','apis/swIMG/');
 	lnks.click(['swimg_demo']);
+
+	rgx = new getHash('#swimg_doc');
+	rgx.content($('.ov:eq(0)'));
+	rgx = new getHash('#swimg_clog');
+	rgx.content($('.ov:eq(1)'));
 </script>
 <article>
 	<header class="article_h">

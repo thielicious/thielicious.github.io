@@ -1,6 +1,6 @@
 // DOM-ready code
 
-$(function() {	
+$(function() {
 	soon();																// 'Soon'-Dialog
 	activeLnkMenu();													// active style of a menu link
 	activeLnk('sidebar');												// active style of a sidebar link
@@ -15,4 +15,13 @@ $(function() {
 
 	stay();																// prevents scrolling to the top
 	toggleCode();														// toggle code preview
+
+	/*var rgx = /#swimg/g,
+		hash = window.location.hash;
+	if (hash.match(rgx)) {
+		$('ul.api li a:eq(0)').trigger('click');
+	}*/
+
+	var rgx = new getHash('#swimg');
+	rgx.content($('ul.api li a:eq(0)'));
 });
