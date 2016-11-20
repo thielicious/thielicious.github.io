@@ -16,12 +16,5 @@ $(function() {
 	stay();																// prevents scrolling to the top
 	toggleCode();														// toggle code preview
 
-	/*var rgx = /#swimg/g,
-		hash = window.location.hash;
-	if (hash.match(rgx)) {
-		$('ul.api li a:eq(0)').trigger('click');
-	}*/
-
-	var rgx = new getHash('#swimg');
-	rgx.content($('ul.api li a:eq(0)'));
+	loadHash('#swimg', 'ul.api li a:eq(0)');
 });

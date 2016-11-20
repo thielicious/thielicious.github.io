@@ -150,13 +150,11 @@ function store() {
 }
 
 // hash trigger
-function getHash(rgx) {
-	var hash = window.location.hash;
-	this.rgx = new RegExp(rgx,'i');
-	getHash.prototype.content = function(el) {
-		if (hash.match(this.rgx)) {
-			$(el).trigger('click');
-		}
+function loadHash(rgx, el) {
+	var hash = window.location.hash,
+		rgx = new RegExp(rgx,'i');
+	if (hash.match(rgx)) {
+		$(el).trigger('click');
 	}
 }
 

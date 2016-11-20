@@ -7,21 +7,17 @@
 	content.getTo(2,'swimg_dls.htm');
 	content.getTo(3,'swimg_demo.htm');
 	content.getTo(4,'swimg_lic.htm');
+	
 	activeLnk('ov');
 
 	var lnks = new TxtLnk('section.content','apis/swIMG/');
 	lnks.click(['swimg_demo']);
 
-	rgx = new getHash('#swimg_doc');
-	rgx.content($('.ov:eq(0)'));
-	rgx = new getHash('#swimg_clog');
-	rgx.content($('.ov:eq(1)'));
-	rgx = new getHash('#swimg_dls');
-	rgx.content($('.ov:eq(2)'));
-	rgx = new getHash('#swimg_demo');
-	rgx.content($('.ov:eq(3)'));
-	rgx = new getHash('#swimg_lic');
-	rgx.content($('.ov:eq(4)'));
+	loadHash('#swimg_doc','.ov:eq(0)');
+	loadHash('#swimg_clog','.ov:eq(1)');
+	loadHash('#swimg_dls','.ov:eq(2)');
+	loadHash('#swimg_demo','.ov:eq(3)');
+	loadHash('#swimg_lic','.ov:eq(4)');
 </script>
 <article>
 	<header class="article_h">
