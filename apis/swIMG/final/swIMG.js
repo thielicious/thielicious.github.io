@@ -32,14 +32,13 @@
 		_________________________________________________________________________________
 */
 		
-		
-			
-	swIMG = function(cfg = null) {	
 	
-		window.onload = function() {
-			
+
+	swIMG = function(cfg = null) {	
+		
+		//window.onload = function() {
+
 			// ---------- Configuration ----------
-			
 			chkcfg = function(prop, defaultVal) {
 				if (cfg != null) {
 					if(cfg[prop] != null) {
@@ -483,5 +482,5 @@
 					}
 				})
 			}
-		}
+		//}
 	}

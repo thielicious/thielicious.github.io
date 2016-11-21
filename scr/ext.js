@@ -249,20 +249,6 @@ Ex:
 */
 
 
-// alternative prototype
-/*function variation(url) {
-	let func = $.extend({}, {
-		dataType: 'script',
-		cache: true,
-		url: url
-	});
-	this.url = url;
-	variation.prototype.do = function(func) {
-		return $.ajax(this.url).done(func);
-	}
-}*/
-
-
 // debug test for callbacks
 function debugResponder() {	
 	return alert('1');
