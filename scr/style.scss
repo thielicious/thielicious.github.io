@@ -58,9 +58,9 @@ h2 {
 	padding-left: 3px;
 	&.sb-topic {
 		color: black;
-		&:nth-child(5) {
-			display: none;
-		}
+	}
+	&.sb-api-topic {
+		display: none;
 	}
 }
 h3 {

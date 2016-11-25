@@ -53,7 +53,7 @@ h2 {
 h2.sb-topic {
   color: black;
 }
-h2.sb-topic:nth-child(5) {
+h2.sb-api-topic {
   display: none;
 }
 

@@ -5,16 +5,15 @@ $(function() {
 	activeLnkMenu();													// active style of a menu link
 	activeLnk('sidebar');												// active style of a sidebar link
 	lnkJump($('html, body'),800);										// link jump scroll animation
-
-	loadAPI(0,'swIMG/swimg.htm');										// loads content of the clicked API
-	loadDoc(0,'swIMG/swimg_doc.htm');									// loads docs of an API
-	loadDoc(1,'swIMG/swimg_clog.htm');
-	loadDoc(2,'swIMG/swimg_dls.htm');
-	loadDoc(3,'swIMG/swimg_demo.htm');
-	loadDoc(4,'swIMG/swimg_lic.htm');
+	
+	loadAPI(0,0,'swIMG/swimg.htm');										// loads content of the clicked API
+	loadDoc(0,'swIMG',['doc','clog','dls','demo','lic'])	;			// loads docs of an API
+	loadAPI(5,1,'aLocal/alocal.htm');
+	loadDoc(5,'aLocal',['doc','dls','lic']);	
 
 	stay();																// prevents scrolling to the top
 	toggleCode();														// toggle code preview
 
-	loadHash('#swimg', 'ul.api li a:eq(0)');
+	loadHash('#swimg',0,'ul.api li a');									// loads hash link
+	loadHash('#alocal',5,'ul.api li a');
 });

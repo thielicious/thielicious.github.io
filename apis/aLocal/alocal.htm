@@ -1,0 +1,32 @@
+<script>
+	var content = new LnkGen($('.topics li a'));
+	content.setContent($('section.content'));
+	content.setPath('apis/aLocal/');
+	content.getTo(0,'alocal_doc.htm');
+	content.getTo(1,'alocal_dls.htm');
+	content.getTo(2,'alocal_lic.htm');
+	
+	activeLnk('ov');
+
+	var lnks = new TxtLnk('section.content','apis/aLocal/');
+	lnks.clk('alocal',['demo']);
+
+	loadHash('#alocal',0,'.ov',['doc','dls','lic']);
+</script>
+<article>
+	<header class="article_h">
+		<h1>aLocal</h1>
+		<h3 class="subheadline">Overview</h3>
+	</header>
+	<br><br>
+	<p class="text">
+		<strong>aLocal</strong> ('a': abbr. for 'auto') is a tiny Javascript snippet.<br>
+	</p>
+	<br><br>
+	<h3>Click below for more information</h3>
+	<ul class="topics">
+		<li><a class="txt_lnk ov" href="#">Documentation</a></li>
+		<li><a class="txt_lnk ov" href="#">Download</a></li>
+		<li><a class="txt_lnk ov" href="#">Licence</a></li>
+	</ul>
+</article>

@@ -1,4 +1,4 @@
-// Extern Functions
+// ::::: EXTERN FUNCTIONS
 
 
 // replaces the opening HTML tags with &lt;
@@ -23,7 +23,6 @@ Ex:
 	code.set('test');
 	code.insert('code');
 */
-
 
 // generates links to be loaded with ajax
 function LnkGen(sel) {
@@ -56,7 +55,6 @@ Ex:
 	demos.getTo(0,'swimg_demo_img.htm');
 */
 
-
 // link jump 
 function lnkJump(where, spd) {
 	$('a[href*="#"]:not([href="#"])').click(function() {			
@@ -66,7 +64,6 @@ function lnkJump(where, spd) {
 		}, spd);
 	});
 }
-
 
 // get HTM page
 function getPage() {
@@ -78,7 +75,6 @@ function getPage() {
 	);
 }
 
-
 // active link main menu
 function activeLnkMenu() {
 	let gP = function(find) {
@@ -86,7 +82,7 @@ function activeLnkMenu() {
 	};
 	let act = function(find) {
 		let rep = find.replace("/","",gP(find));
-		if (gP(find)) {										
+		if (gP(find)) {	
 			$('.menuitem a').removeClass('activemenu');
 			$('.menuitem a[href="'+rep+'"]').addClass('activemenu');
 		}
@@ -94,14 +90,14 @@ function activeLnkMenu() {
 	act('index.html');
 }
 
-
 // active link sidebar
 function activeLnk(where) {
+	var el = '.sidemenu a';
 	$.fn.active = function() { $(this).addClass('active'); }
 	$.fn.inactive = function() { $(this).removeClass('active'); }
 	if (where == 'sidebar') {
-		$('.sidemenu a:not(.soon)').on('click',function() {
-			$('.sidemenu a').inactive();
+		$(el+':not(.soon)').on('click',function() {
+			$(el).inactive();
 			$(this).active();
 		});
 	} 
@@ -109,64 +105,64 @@ function activeLnk(where) {
 		$('.ov').on('click',function() {
 			let idx = $('.ov').index($(this)),
 				eq = $('ul.docs li a:eq('+idx+')');
-			$('.sidemenu a').inactive();
+			$(el).inactive();
 			eq.active();
 		});
 	}
 }
 
-
 // dynamic ajax text link
 function TxtLnk(cont, path) {
 	this.cont = $(cont);
 	this.path = path;
-	this.pg = [];
-	TxtLnk.prototype.click = (pg) => {
+	TxtLnk.prototype.clk = (api, pg) => {
 		let cont = this.cont,
-			path = this.path,
-			arr = this.pg;
+			path = this.path;
 		pg.forEach(k => {
-			arr.push(k);
-		});
-		arr.forEach(k => {
-			return $('.'+k)
+			return $('.'+api+'_'+k)
 				.attr('onClick', "javascript: return true;")
-				.on('click', () => {
-					cont.load(path+k+'.htm');
+				.on('click', function() {
+					cont.load(path+api+'_'+k+'.htm');
 				});
 		});
 	}
 }
 
-
-// store client-sided data
-function store() {
-	store.prototype.set = function(key, val) {
-		sessionStorage[key] = val;
-	}
-	store.prototype.get = function(key) {
-		sessionStorage[key];
-	}
-}
-
 // hash trigger
-function loadHash(rgx, el) {
-	var hash = window.location.hash,
-		rgx = new RegExp(rgx,'i');
-	if (hash.match(rgx)) {
-		$(el).trigger('click');
+function loadHash(api, i, el, rgx = null) {
+	let hash = window.location.hash;
+	this.trig = (el, i) => {
+		return $(el+':eq('+i+')').trigger('click');
+	}
+	if (rgx != null) {
+		rgx.forEach(k=> {
+			chk = new RegExp(api+'_'+k,'i');
+			if (hash.match(k)) {
+				this.trig(el, i);
+			}
+			i++;
+		});
+	} else {
+		chk = new RegExp(api,'i');
+		if (hash.match(api)) {
+			this.trig(el, i);
+		}
 	}
 }
-
 
 // ajax api loader
-function loadAPI(eq, api) {
-	$('ul.api li a').on('click',function() {
-		let act = $('ul.api li a').index($(this));
-			docs = $('ul.docs:eq('+eq+')');
+function loadAPI(eq, sb, api) {
+	let el = 'ul.api li a',
+		ul = 'ul.docs',
+		h2 = 'h2.sb-api-topic',
+		docs_api = $(ul+','+h2);
+	$(el).on('click',function() {
+		let act = $(el).index($(this)),
+			docs = $(ul+':eq('+sb+')');
 		if (act == eq) {
+			docs_api.hide();
 			$('section.content').load('apis/'+api);
-			$('h2.sb-topic').show();
+			$(h2+':eq('+sb+')').show();
 			docs
 				.css('opacity','0')
 				.show()
@@ -177,17 +173,24 @@ function loadAPI(eq, api) {
 	});
 }
 
-
 // ajax doc loader
-function loadDoc(idx, doc) {
-	$('ul.docs li a').on('click',function() {
-		let act = $('ul.docs li a').index($(this));
-		if (act == idx) {
-			$('section.content').load('apis/'+doc);
-		}
-	});
+function loadDoc(at, api, doc) {
+	this.abc = function(idx,doc) {
+		let el = 'ul.docs li a';
+		$(el).on('click',function() {
+			let act = $(el).index($(this));
+			if (act == idx) {
+				$('section.content').load('apis/'+doc);
+			}
+		});
+	}
+	this.def = function(at, api, doc) {
+		doc.forEach(k => {
+			this.abc(at++,api+'/'+api.toLowerCase()+'_'+k+'.htm');
+		});		
+	}
+	return this.def(at, api, doc);
 }
-
 
 // dialog box 'Soon'
 function soon() {
@@ -226,8 +229,41 @@ function soon() {
 		});
 }
 
+// toggle code
+function toggleCode() {
+	$('.vcode').click(function() {
+		$('.toggleCode').toggle(300);
+	});
+}
 
-// load extern javascript function
+// prevents scrolling to top
+function stay() {
+	$('a[href="#"]').attr('onClick', "javascript: return false;");
+}
+
+
+
+
+
+
+// ::::: REPOSITORIES
+
+// ----- store client-sided data
+function store() {
+	store.prototype.set = function(key, val) {
+		sessionStorage[key] = val;
+	}
+	store.prototype.get = function(key) {
+		sessionStorage[key];
+	}
+}
+
+// ----- debug test for callbacks
+function debugResponder() {	
+	return alert('1');
+}
+
+// ----- load extern javascript function
 var extern = function(url) {
 	let func = $.extend({}, {
 		dataType: 'script',
@@ -247,23 +283,3 @@ Ex:
 	var ext = new ext('scr/ext.js');
 	ext.do(()=> debugResponder());
 */
-
-
-// debug test for callbacks
-function debugResponder() {	
-	return alert('1');
-}
-
-
-// toggle code
-function toggleCode() {
-	$('.vcode').click(function() {
-		$('.toggleCode').toggle(300);
-	});
-}
-
-
-// prevents scrolling to top
-function stay() {
-	$('a[href="#"]').attr('onClick', "javascript: return false;");
-}
