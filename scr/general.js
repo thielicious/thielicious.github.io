@@ -7,7 +7,8 @@ $(function() {
 	lnkJump($('html, body'),800);										// link jump scroll animation
 	
 	loadAPI(0,0,'swIMG/swimg.htm');										// loads content of the clicked API
-	loadDoc(0,'swIMG',['doc','clog','dls','demo','lic'])	;			// loads docs of an API
+	loadDoc(0,'swIMG',['doc','clog','dls','demo','lic']);			// loads docs of an API
+	
 	loadAPI(5,1,'aLocal/alocal.htm');
 	loadDoc(5,'aLocal',['doc','dls','lic']);	
 

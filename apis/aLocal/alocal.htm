@@ -6,10 +6,7 @@
 	content.getTo(1,'alocal_dls.htm');
 	content.getTo(2,'alocal_lic.htm');
 	
-	activeLnk('ov');
-
-	var lnks = new TxtLnk('section.content','apis/aLocal/');
-	lnks.clk('alocal',['demo']);
+	activeLnk('ov',1);
 
 	loadHash('#alocal',0,'.ov',['doc','dls','lic']);
 </script>
@@ -20,7 +17,9 @@
 	</header>
 	<br><br>
 	<p class="text">
-		<strong>aLocal</strong> ('a': abbr. for 'auto') is a tiny Javascript snippet.<br>
+		<strong>aLocal</strong> ('a': abbr. for 'auto') is a tiny Javascript snippet which automatically updates the address bar to localhost.<br>
+		<br>It's useful for Beginners who just started learn server-side languages like PHP. Apart from many other solutions in other languages, this one simply executes it after opening a file into the browser. It is implemented just like any other script at the top.
+		
 	</p>
 	<br><br>
 	<h3>Click below for more information</h3>

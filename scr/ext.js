@@ -57,13 +57,30 @@ Ex:
 
 // link jump 
 function lnkJump(where, spd) {
+	$('a[href*="#"]:not([href="#"]').click(function() {
+		if ($(this).hasClass('jump')) {
+			var select = '.sidemenu li a',
+				getURL = $(this).attr('href').replace('#',''),
+				api = getURL.substr(0,getURL.lastIndexOf('_')),
+				doc = getURL.substr(getURL.lastIndexOf('_')+1);
+			$(select).removeClass('active');
+			$('ul.'+api+' li a.'+doc).addClass('active');
+		} else {
+			let target = $(this.hash);
+			where.animate({
+				scrollTop: target.offset().top
+			}, spd);
+		}
+	});
+}
+/*function lnkJump(where, spd) {
 	$('a[href*="#"]:not([href="#"])').click(function() {			
 		let target = $(this.hash);
 		where.animate({
 			scrollTop: target.offset().top
 		}, spd);
 	});
-}
+}*/
 
 // get HTM page
 function getPage() {
@@ -91,7 +108,7 @@ function activeLnkMenu() {
 }
 
 // active link sidebar
-function activeLnk(where) {
+function activeLnk(where, docsid = null) {
 	var el = '.sidemenu a';
 	$.fn.active = function() { $(this).addClass('active'); }
 	$.fn.inactive = function() { $(this).removeClass('active'); }
@@ -104,7 +121,7 @@ function activeLnk(where) {
 	if (where == 'ov') {
 		$('.ov').on('click',function() {
 			let idx = $('.ov').index($(this)),
-				eq = $('ul.docs li a:eq('+idx+')');
+				eq = $('ul.docs:eq('+docsid+') li a:eq('+idx+')');
 			$(el).inactive();
 			eq.active();
 		});
@@ -240,46 +257,3 @@ function toggleCode() {
 function stay() {
 	$('a[href="#"]').attr('onClick', "javascript: return false;");
 }
-
-
-
-
-
-
-// ::::: REPOSITORIES
-
-// ----- store client-sided data
-function store() {
-	store.prototype.set = function(key, val) {
-		sessionStorage[key] = val;
-	}
-	store.prototype.get = function(key) {
-		sessionStorage[key];
-	}
-}
-
-// ----- debug test for callbacks
-function debugResponder() {	
-	return alert('1');
-}
-
-// ----- load extern javascript function
-var extern = function(url) {
-	let func = $.extend({}, {
-		dataType: 'script',
-		cache: true,
-		url: url 
-	});
-	return $.ajax(func);
-};
-function ext(script) {												// prototype filename
-	this.script = script;
-	ext.prototype.do = function(func) {
-		return extern(this.script).done(func);
-	}
-}
-/*
-Ex:
-	var ext = new ext('scr/ext.js');
-	ext.do(()=> debugResponder());
-*/

@@ -1,4 +1,6 @@
 <script>
+	lnkJump($('html, body'),800);
+
 	var content = new LnkGen($('.topics li a'));
 	content.setContent($('section.content'));
 	content.setPath('apis/swIMG/');
@@ -8,12 +10,12 @@
 	content.getTo(3,'swimg_demo.htm');
 	content.getTo(4,'swimg_lic.htm');
 	
-	activeLnk('ov');
+	activeLnk('ov',0);
 
 	var lnks = new TxtLnk('section.content','apis/swIMG/');
 	lnks.clk('swimg',['demo']);
 	
-	loadHash('#swimg',0,'.ov'['doc','clog','dls','demo','lic']);
+	loadHash('#swimg',0,'.ov',['doc','clog','dls','demo','lic']);
 </script>
 <article>
 	<header class="article_h">
@@ -24,7 +26,7 @@
 	<p class="text">
 		<strong>swIMG</strong> ('sw': abbr. for 'switch') is a fullsize image viewer for a specified 
 		thumbnail gallery which instantly works right after implementation. <br>
-		For a livedemo: see <a class="txt_lnk swimg_demo" href="#">EXAMPLES</a><br><br>
+		For a livedemo: see <a class="txt_lnk swimg_demo jump" href="#swimg_demo">EXAMPLES</a><br><br>
 		<h1 class="quote"><em>'Straight to the point.'</em></h1>
 		<br>This simple and slim gallery is an alternative contrast to the overwhelmingly complicated and slow-loading gallery APIs in the rest of the web. 
 		By standard, it extracts the image source of the thumbnails and shows them in fullsize. This script can 
