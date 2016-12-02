@@ -242,7 +242,8 @@
 		</code>
 		</pre>
 		</div>
-		With AJAX you simply append the jQuery extension <strong>.eMM()</strong> to your form tag, the rest will work on its own and skips refreshing the page. The <a class="txt_lnk" href="https://github.com/thielicious/eMM/blob/master/eMM.js">sourcecode</a> of it is on the same repository at GitHub. After you cloned the Repo, link this script on top of your page, if you would like to stringify data into JSON:<br>
+		This snippet requires the JavaScript library jQuery: <a class="txt_lnk" target="_blank" href="https://code.jquery.com/jquery-3.1.1.min.js">jQuery v3.10</a><br>
+		With AJAX you simply append the jQuery PlugIn <strong>.eMM()</strong> to your form tag, the rest will work on its own and skips refreshing the page. The <a class="txt_lnk" href="https://github.com/thielicious/eMM/blob/master/eMM.js">sourcecode</a> of it is on the same repository at GitHub. After you cloned the Repo, link this script on top of your page, if you would like to stringify data into JSON:<br>
 		<div id="code">
 		<pre>
 		<code>
@@ -252,14 +253,6 @@
 		</div>
 		<br>
 		It uses an AJAX request, serializes form data to JSON and sends it to an extern PHP file. The PHP file contains the PHP code seen below.<br>
-		<br><br>
-		<h4>Parameters</h4><br>
-		<ul>
-			<li>&#187 <strong>resp</strong><br>
-			target HTML element where the response from PHP appears.</li>
-			<li>&#187 <strong>php</strong><br>
-			PHP file containing the code, see example below:</li>
-		</ul>
 		<div id="code">
 		<pre>
 		<code>
@@ -271,7 +264,7 @@
 	    if ($_POST["send"] != "Send") {
 	      $request = new Request();
 	      $request->debugMode("on");
-          $request->method("json");
+	      $request->method("json");
 	      $request->recipient("michel.thiel@gmx.net");
 	      $request->emailHeader("From: THIELICIOUS - Customer enquiry from ".$request->getName());
 	      $request->send();
@@ -283,6 +276,13 @@
 		</pre>
 		</div>
 		<br>
+		<h4>PlugIn Parameters</h4><br>
+		<ul>
+			<li>&#187 <strong>resp</strong><br>
+			target HTML element where the response from PHP appears.</li>
+			<li>&#187 <strong>php</strong><br>
+			PHP file containing the code, see example below:</li>
+		</ul>
 	</p>
 </article>
 <br>
