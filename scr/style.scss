@@ -146,6 +146,23 @@ ul {
 	&.docs {
 		display: none;
 	}
+	&.table {
+		display: block;
+		margin: 0;
+		padding: 0;
+		> li {
+			@include border(white, all);
+			color: white;
+			display: block;
+			background: #055;
+			float: left;
+			font-size: 1.4vw;
+			width: calc(100% / 5);
+			@include media(big) {
+				font-size: 1.8vw;
+			}
+		}
+	}
 }
 li {
 	list-style-type: none;

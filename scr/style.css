@@ -149,6 +149,25 @@ ul.topics {
 ul.docs {
   display: none;
 }
+ul.table {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+ul.table > li {
+  border: solid 1px white;
+  color: white;
+  display: block;
+  background: #055;
+  float: left;
+  font-size: 1.4vw;
+  width: calc(100% / 5);
+}
+@media screen and (max-width: 768px) {
+  ul.table > li {
+    font-size: 1.8vw;
+  }
+}
 
 li {
   list-style-type: none;

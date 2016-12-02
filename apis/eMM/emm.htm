@@ -1,0 +1,39 @@
+<script>
+	lnkJump($('html, body'),800);
+
+	var content = new LnkGen($('.topics li a'));
+	content.setContent($('section.content'));
+	content.setPath('apis/eMM/');
+	content.getTo(0,'emm_doc.htm');
+	content.getTo(1,'emm_clog.htm');
+	content.getTo(2,'emm_dls.htm');
+	content.getTo(3,'emm_demo.htm');
+	content.getTo(4,'emm_lic.htm');
+	
+	activeLnk('ov',2);
+	
+	loadHash('#emm',0,'.ov',['doc','clog','dls','demo','lic']);
+</script>
+<article>
+	<header class="article_h">
+		<h1>eMM</h1>
+		<h3 class="subheadline">Overview</h3>
+	</header>
+	<br><br>
+	<p class="text">
+		<strong>eMM</strong> (abbr. for 'eMail Manager') is a compact and tiny form mailer including all 
+		its adjustments for personal desires. This API simplifies the flexible use of several 
+		input fields which will be used to send and transport data through a classical mailing 
+		process. Useful for setting up customer contact forms and newsletters.
+		<br>
+	</p>
+	<br><br>
+	<h3>Click below for more information</h3>
+	<ul class="topics">
+		<li><a class="txt_lnk ov" href="#">Documentation</a></li>
+		<li><a class="txt_lnk ov" href="#">Changelog</a></li>
+		<li><a class="txt_lnk ov" href="#">Download</a></li>
+		<li><a class="txt_lnk ov" href="#">Examples</a></li>
+		<li><a class="txt_lnk ov" href="#">Licence</a></li>
+	</ul>
+</article>

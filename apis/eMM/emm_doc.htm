@@ -1,0 +1,294 @@
+<script>  
+	lnkJump($('html, body'),800);
+	stay();
+	var lnks = new TxtLnk('section.content','apis/eMM/');
+	lnks.clk('emm',['demo','lic','clog','dls']);
+</script>
+<article>
+	<header class="article_h">
+		<h1>eMM</h1>
+		<h3 class="subheadline">Documentation</h3>
+	</header>
+	<br>
+	<ul class="topics">
+		<li>&#187 <a class="txt_lnk" href="#intro">Introduction</a></li>
+		<li>&#187 <a class="txt_lnk" href="#setup">Setup Information</a></li>
+		<li>&#187 <a class="txt_lnk" href="#config">Configuration</a></li>
+		<li>&#187 <a class="txt_lnk" href="#usage">Usage</a></li>
+		<li>&#187 <a class="txt_lnk" href="#demos">Examples</a></li>
+	</ul>
+	<br><br><br>
+	<h3 id="intro">INTRODUCTION</h3><br><br>
+	<p class="text">
+		This API is licensed under the MIT, see <a class="txt_lnk emm_lic jump" href="#emm_lic">LICENCE</a><br>
+		</br>
+		<strong>eMM</strong> (abbr. for 'eMail Manager') is a compact and tiny mailing API including a small adjustments for personal desires. This API simplifies the flexible use of several input fields which will be used to send and transport data through a classical mailing process. Useful for setting up customer contact forms and newsletters.
+		<br>
+	</p>
+</article>
+<br>
+<article>
+	<h3 id="setup">SETUP INFORMATION</h3><br><br>
+	<p class="text">
+		This API does not require any frameworks nor additional libraries. Yet, eMM requires atleast PHP version 5.6 but it is recommended to install the API under the PHP version 7.0 due to updates that might come in near future.<br>
+		<br>
+		<strong>1.</strong> Click the link below to land on the download site of <strong>eMM</strong> and choose your option.<br>
+		<br>
+		- <a class="txt_lnk emm_dls jump" href="#emm_dls">eMM API</a><br>
+		<br>
+		For an overview of all versions and bug fixes please check the <a class="txt_lnk emm_clog jump" href="#emm_clog">CHANGELOG</a>.<br>
+		<br><br>
+		<strong>2.</strong> After download/clone make sure you setup a <strong>Namespace</strong> so that no conflicts occur depending on your own code you could already have.<br>
+		<br>
+		For this purpose, simply open the class <strong>aLoad</strong> (aload.class.php) and create an encapsulation around it. The Namespace eMM is pre-defined, but if you wish to change this then simply do so.<br>
+		<div id="code">
+		<pre>
+		<code>
+	namespace eMM;
+	class aLoad { ... }	
+	$aload = new \eMM\aLoad();
+	\eMM\aLoad::register();
+		</code>
+		</pre>
+		</div>
+		<strong>3.</strong> Then you have to include the aload class that initializes the eMM class pack in your PHP page.<br>
+		<div id="code">
+		<pre>
+		<code>
+	&lt;?php
+	  require_once "aLoad.class.php";
+	?>
+		</code>
+		</pre>
+		</div>
+		This is the basic implementation without any additional configuration. You have to adjust the default configuration as explained below.<br>
+	</p>	
+</article>
+<br>
+<article>
+	<h3 id="config">CONFIGURATION</h3><br><br>
+	<p class="text">
+		eMM is separated in 2 modules:<br>
+		&#187; <strong>Request</strong>, for Customer Enquiries<br>
+		&#187; <strong>News</strong>, for administrators<br>
+		<br>
+		The Request class handles the contact form data through a submit event by customers, the News class sends a newsletter to all registered users using a form.<br>
+		The default configuration for an enquiry form is listed below and is required:<br>
+		<div id="code">
+		<pre>
+		<code>
+	require_once "aLoad.class.php";
+	
+	if (isset($_POST["send"])) {
+	  $request = new Request();
+	  $request->debugMode("on");
+	  $request->setMethod("post");
+	  $request->recipient("admin@example.com");
+	  $request->emailHeader("From: Example.com - Customer enquiry from ".$request->getName());
+	  $request->send();
+	}
+		</code>
+		</pre>
+		</div>
+		<br>
+		Optionally, default configuration for the newsletter using News module:<br>
+		<div id="code">
+		<pre>
+		<code>
+	require_once "classes/aLoad.class.php";
+
+	if (isset($_POST["send"])) {
+	  $news = new News();
+	  $news->debugMode("on");
+	  $news->signature(
+	    "------Company Name------
+	    &lt;br>Your Name&lt;br>
+	    www.example.com&lt;br>
+	    ---------------------"
+	  );
+	  $news->emailHeader("From: Company - Notification");
+	  $news->emailDB("localhost", "root", "", "emails");
+	  $news->send();
+	}
+		</code>
+		</pre>
+		</div>
+		A live demonstration of both modules can be viewed here: <a class="txt_lnk emm_demo jump" href="#emm_demo">EXAMPLES</a>.<br>
+		<br><br>
+		<h4>Methods</h4><br>
+		<h4>*::debugMode(status)<br><span class="def_conf">default: 'on'</span></h4><br>
+		For debugging the form data and mail content will be sent directly to the screen for investigation and testing purposes.<br>
+		   <li>&#187 choose <strong>'on'</strong> to enable the debugger, mails will not be sent.</li> 
+		   <li>&#187 choose <strong>'off'</strong> if you wish to turn it off and make it able to send.</li>
+		<br><br>
+		<h4>*::emailHeader(header-text)<br><span class="def_conf">optional but recommended</span></h4><br>
+		The header of the email needs to be defined for recognization. (It is not the subject).<br>
+		<br><br>
+		<h4>*::send()<br><span class="def_conf">required</span></h4><br>
+		Executes the classical mailing procedure. If debugMode is 'on', it's then sent to the screen.<br>
+		<br><br>
+		<h4>*::getName()<br><span class="def_conf">optional</span></h4><br>
+		Use this method to mention the user's name of the current eMail address.<br>
+		<br><br>
+		<h4>Request::method(method)<br><span class="def_conf">default: 'post'</span></h4><br>
+		When method is set to <strong>'json'</strong>, it will be send to the code above which is placed in a separated PHP file. AJAX will come into play, more to this jump to <a class="txt_lnk" href="#usage">Usage</a><br>
+			<li>&#187 <strong>'post'</strong> enables you to send POST data to the header.</li> 
+		    <li>&#187 <strong>'json'</strong> enables you to use AJAX without refreshing the page.</li>
+		<br><br>
+		<h4>Request::recipient(email address)<br><span class="def_conf">default: 'admin@example.com'</span></h4><br>
+		Mail content will be sent to this email address.<br>
+		<br><br>
+		<h4>News::signature(signature)<br><span class="def_conf">optional</span></h4><br>
+		Defines a signature as footer in the email content.<br>
+		<br><br>
+		<h4>News::emailDB(server, user, password, database)<br><span class="def_conf">required</span></h4><br>
+		Connection data to the SQL database that fetches all email addresses from registered users.<br>
+	</p>	
+</article>
+<br>
+<article>
+	<h3 id="usage">USAGE</h3><br><br>
+	<p class="text">
+		The Usage of it is obviously treating it as a simple contact form and submit. This API handles a certain amount of input fields tagged with the <strong>name</strong> attribute:<br>
+	</p>
+	<br>
+	<div class="table-wrap">
+		<ul class="table">
+			<li style="clear:both">subject</li>
+			<li>content</li>
+			
+			<li style="clear:both">firstname</li>
+			<li>middlename</li>
+			<li>lastname</li>
+			<li>title</li>
+			
+			<li style="clear:both">birth</li>
+
+			<li style="clear:both">address</li>
+			<li>location</li>
+			<li>country</li>
+			<li>zip</li>
+			<li>bic</li>
+			
+			<li style="clear:both">phone</li>
+			<li>mobile</li>
+			<li>fax</li>
+			<li>email</li>
+			
+			<li style="clear:both">company</li>
+			<li>website</li>
+			<li>facebook</li>
+			<li>twitter</li>
+		</ul>
+	</div>
+	<p class="text" style="clear:both">
+		<br><br>
+		The name attribute must contain any of the values above in order to apply and send.<br>
+		<br><br>
+		<h4>Example code with a contact form</h4>
+		<div id="code">
+		<pre>
+		<code>
+	&lt;form action="&lt;?php $_SERVER["PHP_SELF"]; ?>" method="POST">
+	  &lt;input type="text" name="name" required />
+	  &lt;input type="email" name="email" pattern="[^@]*@[^@]*" required />&lt;br>
+	  &lt;input type="text" name="subject" required />&lt;br>
+	  &lt;textarea name="content" required>&lt;/textarea>&lt;br>
+	  &lt;input type="submit" name="send" value="Send"/>&lt;br>
+	  &lt;span class="resp">
+	  
+	    &lt;?php
+	      require_once "classes/aLoad.class.php";	
+		  
+	      if (isset($_POST["send"])) {
+	        $request = new Request();
+	        $request->debugMode("off");
+	        $request->method("post");
+	        $request->recipient("john.doe@example.net");
+	        $request->emailHeader("From: Customer enquiry from ".$request->getName());
+	        $request->send();
+	      }
+	    ?>
+		
+	  &lt;/span>
+	&lt;/form>
+		</code>
+		</pre>
+		</div>
+		<br>
+		<h4>Same example code using AJAX/JSON</h4>
+		<div id="code">
+		<pre>
+		<code>
+	&lt;form action="&lt;?php $_SERVER["PHP_SELF"]; ?>" method="POST">
+	  &lt;input type="text" name="name" required />
+	  &lt;input type="email" name="email" pattern="[^@]*@[^@]*" required />&lt;br>
+	  &lt;input type="text" name="subject" required />&lt;br>
+	  &lt;textarea name="content" required>&lt;/textarea>&lt;br>
+	  &lt;input type="submit" name="send" value="Send"/>&lt;br>
+	  &lt;span class="resp">&lt;/span>
+	&lt;/form>
+	
+	&lt;script>
+	
+	  $(() {
+	    $('form').eMM({ 
+	      resp    : '.result', 
+	      php     : 'json.inc.php'
+	    });
+	  });
+	  
+	&lt;/script>
+		</code>
+		</pre>
+		</div>
+		With AJAX you simply append the jQuery extension <strong>.eMM()</strong> to your form tag, the rest will work on its own and skips refreshing the page. The <a class="txt_lnk" href="https://github.com/thielicious/eMM/blob/master/eMM.js">sourcecode</a> of it is on the same repository at GitHub. After you cloned the Repo, link this script on top of your page, if you would like to stringify data into JSON:<br>
+		<div id="code">
+		<pre>
+		<code>
+	&lt;script src="https://github.com/thielicious/eMM/blob/master/eMM.js"/>&lt;/script>
+		</code>
+		</pre>
+		</div>
+		<br>
+		It uses an AJAX request, serializes form data to JSON and sends it to an extern PHP file. The PHP file contains the PHP code seen below.<br>
+		<br><br>
+		<h4>Parameters</h4><br>
+		<ul>
+			<li>&#187 <strong>resp</strong><br>
+			target HTML element where the response from PHP appears.</li>
+			<li>&#187 <strong>php</strong><br>
+			PHP file containing the code, see example below:</li>
+		</ul>
+		<div id="code">
+		<pre>
+		<code>
+	&lt;?php
+
+	  require_once "classes/aLoad.class.php";
+
+	  if (isset($_POST["send"])) {
+	    if ($_POST["send"] != "Send") {
+	      $request = new Request();
+	      $request->debugMode("on");
+          $request->method("json");
+	      $request->recipient("michel.thiel@gmx.net");
+	      $request->emailHeader("From: THIELICIOUS - Customer enquiry from ".$request->getName());
+	      $request->send();
+	    }
+	  }
+
+	?>
+		</code>
+		</pre>
+		</div>
+		<br>
+	</p>
+</article>
+<br>
+<article>
+	<h3 id="demos">EXAMPLES (<i style="font-size: 0.8em">code.runnable.com</i>)</h3><br><br>
+	<p class="text">
+		Please head to <a class="txt_lnk emm_demo jump" href="#emm_demo">EXAMPLES</a> for a detailed overview of demos.<br>
+	</p>
+</article>

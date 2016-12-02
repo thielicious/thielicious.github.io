@@ -10,11 +10,15 @@ $(function() {
 	loadDoc(0,'swIMG',['doc','clog','dls','demo','lic']);			// loads docs of an API
 	
 	loadAPI(5,1,'aLocal/alocal.htm');
-	loadDoc(5,'aLocal',['doc','dls','lic']);	
+	loadDoc(5,'aLocal',['doc','dls','lic']);
+
+	loadAPI(4,2,'eMM/emm.htm');
+	loadDoc(8,'eMM',['doc','clog','dls','demo','lic']);	
 
 	stay();																// prevents scrolling to the top
 	toggleCode();														// toggle code preview
 
 	loadHash('#swimg',0,'ul.api li a');									// loads hash link
 	loadHash('#alocal',5,'ul.api li a');
+	loadHash('#emm',4,'ul.api li a');
 });
