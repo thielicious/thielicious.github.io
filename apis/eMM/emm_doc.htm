@@ -120,6 +120,7 @@
 		For debugging the form data and mail content will be sent directly to the screen for investigation and testing purposes.<br>
 		   <li>&#187 choose <strong>'on'</strong> to enable the debugger, mails will not be sent.</li> 
 		   <li>&#187 choose <strong>'off'</strong> if you wish to turn it off and make it able to send.</li>
+		   If you wish to deactivate it, you may omit the status for 'off' by just leaving it out.<br>
 		<br><br>
 		<h4>*::emailHeader(header-text)<br><span class="def_conf">optional but recommended</span></h4><br>
 		The header of the email needs to be defined for recognization. (It is not the subject).<br>
@@ -202,7 +203,6 @@
 		  
 	      if (isset($_POST["send"])) {
 	        $request = new Request();
-	        $request->debugMode("off");
 	        $request->method("post");
 	        $request->recipient("john.doe@example.net");
 	        $request->emailHeader("From: Customer enquiry from ".$request->getName());
