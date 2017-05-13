@@ -20,6 +20,7 @@
 	<br><br><br>
 	<h3 id="intro">INTRODUCTION</h3><br><br>
 	<p class="text">
+		<strong>unPOSTer</strong> is a tiny API which prevents form reposting on page refresh. It basically stops you from encountering a re-POST alert prompt.
 		<br>
 	</p>
 </article>
@@ -27,6 +28,32 @@
 <article>
 	<h3 id="setup">SETUP INFORMATION</h3><br><br>
 	<p class="text">
+		Built with PHP (7.09) and no additional frameworks required. Once implemented, it's ready.<br>
+		1. Use your CLI and enter the following to clone:
+		git clone https://github.com/thielicious/unPOSTer.git
+
+		Or click below to choose your download option:<br>
+		<br>
+		- <a class="txt_lnk unposter_dls jump" href="#unposter_dls">unPOSTer</a><br>
+		<br>
+		2. Place this script in your project folder and embed the following in your code:<br>
+		<div id="code">
+		<pre>
+		<code>
+	require_once "unPOSTer.class.php";
+	$unpost = new unPOSTer("KEEP_POST");
+		</code>
+		</pre>
+		</div>
+		<strong>"KEEP_POST"</strong> will be the post data for the session variable. You may name it into anything you like.<br>
+		3. Then include this script above as an extra file in the PHP page where your $_POST is sent to with the following method:<br>
+		<div id="code">
+		<pre>
+		<code>
+	$unpost->unPost("KEEP_POST");
+		</code>
+		</pre>
+		</div>
 		<br>
 	</p>	
 </article>
@@ -34,6 +61,7 @@
 <article>
 	<h3 id="config">CONFIGURATION</h3><br><br>
 	<p class="text">
+		There is no configuration needed.
 		<br>
 	</p>	
 </article>
@@ -41,6 +69,38 @@
 <article>
 	<h3 id="usage">USAGE</h3><br><br>
 	<p class="text">
+		The best use is to create an object of the class first and run it from an extern PHP file using <strong>include</strong> so that there will be no need to re-declare the variable on every page. <br>
+		When this script is implemented, use the following method in the form:<br>
+		<div id="code">
+		<pre>
+		<code>
+	$unpost->retrieve("put_your_input_name_here");
+		</code>
+		</pre>
+		</div>
+		<br>
+		This will parse the $_POST data and keeps it even after refreshing the page and won't be re-posted.<br>
+		<br>
+		If you wish to delete the $_POST data, use this method to simply reset the content:<br>
+				
+		The complete code will look like this. Imagine, the header sends the $_POST data to the same page:<br>
+		<div id="code">
+		<pre>
+		<code>
+	&lt;?php
+		require_once "unPOSTer.class.php";
+		
+		$unpost = new unPOSTer("KEEP_POST");
+		$unpost->unPost();
+	?&gt;
+	&lt;form action='' method=POST&gt;
+		&lt;input type=text name=fname value="&lt;?php echo $unpost->retrieve("fname"); ?&gt;" placeholder="First Name"&gt;
+		&lt;input type=text name=lname value="&lt;?php echo $unpost->retrieve("lname"); ?&gt;" placeholder="Last Name"&gt;
+		&lt;input type=submit name=send value=Send&gt;
+	&lt;/form&gt;
+		</code>
+		</pre>
+		</div>		
 		<br>
 	</p>
 </article>

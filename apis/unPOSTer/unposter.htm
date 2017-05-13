@@ -6,11 +6,12 @@
 	content.setPath('apis/unPOSTer/');
 	content.getTo(0,'unposter_doc.htm');
 	content.getTo(1,'unposter_dls.htm');
-	content.getTo(2,'unposter_lic.htm');
+	content.getTo(2,'unposter_demo.htm');
+	content.getTo(3,'unposter_lic.htm');
 	
 	activeLnk('ov',5);
 	
-	loadHash('#unposter',0,'.ov',['doc','dls','lic']);
+	loadHash('#unposter',0,'.ov',['doc','dls','demo'.'lic']);
 </script>
 <article>
 	<header class="article_h">
@@ -19,13 +20,14 @@
 	</header>
 	<br><br>
 	<p class="text">
-		<strong>unPOSTer</strong> is a flexible loader which automatically loads classes from a given path. Built under PHP 7.09 and no frameworks required.  
+		<strong>unPOSTer</strong> is a tiny API which prevents form reposting on page refresh. It basically stops you from encountering a re-POST alert prompt. 
 		<br>
 	</p>
 	<br><br>
 	<h3>Click below for more information</h3>
 	<ul class="topics">
 		<li><a class="txt_lnk ov" href="#">Documentation</a></li>
+		<li><a class="txt_lnk ov" href="#">Download</a></li>
 		<li><a class="txt_lnk ov" href="#">Download</a></li>
 		<li><a class="txt_lnk ov" href="#">Licence</a></li>
 	</ul>
