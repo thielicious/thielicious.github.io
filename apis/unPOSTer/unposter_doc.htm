@@ -46,11 +46,12 @@
 		</pre>
 		</div>
 		<strong>"KEEP_POST"</strong> will be the post data for the session variable. You may name it into anything you like.<br>
+		<br>
 		3. Then include this script above as an extra file in the PHP page where your $_POST is sent to with the following method:<br>
 		<div id="code">
 		<pre>
 		<code>
-	$unpost->unPost("KEEP_POST");
+	$unpost->unPost();
 		</code>
 		</pre>
 		</div>
@@ -78,11 +79,18 @@
 		</code>
 		</pre>
 		</div>
-		<br>
 		This will parse the $_POST data and keeps it even after refreshing the page and won't be re-posted.<br>
 		<br>
+		<br>
 		If you wish to delete the $_POST data, use this method to simply reset the content:<br>
-				
+		<div id="code">
+		<pre>
+		<code>
+	$unpost->reset();
+		</code>
+		</pre>
+		</div>
+		<br>
 		The complete code will look like this. Imagine, the header sends the $_POST data to the same page:<br>
 		<div id="code">
 		<pre>
@@ -101,6 +109,7 @@
 		</code>
 		</pre>
 		</div>		
+		[THIS DOC IS STILL UNDER CONSTRUCTION]
 		<br>
 	</p>
 </article>
