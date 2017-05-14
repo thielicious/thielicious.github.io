@@ -95,17 +95,18 @@
 		<div id="code">
 		<pre>
 		<code>
-	&lt;?php
-		require_once "unPOSTer.class.php";
-		
-		$unpost = new unPOSTer("KEEP_POST");
-		$unpost->unPost();
-	?&gt;
-	&lt;form action='' method=POST&gt;
-		&lt;input type=text name=fname value="&lt;?php echo $unpost->retrieve("fname"); ?&gt;" placeholder="First Name"&gt;
-		&lt;input type=text name=lname value="&lt;?php echo $unpost->retrieve("lname"); ?&gt;" placeholder="Last Name"&gt;
-		&lt;input type=submit name=send value=Send&gt;
-	&lt;/form&gt;
+&lt;?php
+	require_once "unPOSTer.class.php";
+	
+	$unpost = new unPOSTer("KEEP_POST");
+	$unpost->unPost();
+?&gt;
+&lt;form action='' method=POST&gt;
+	&lt;input type=text name=fname value="&lt;?php echo $unpost->retrieve("fname"); ?&gt;" placeholder="First Name"&gt;
+	&lt;input type=text name=lname value="&lt;?php echo $unpost->retrieve("lname"); ?&gt;" placeholder="Last Name"&gt;
+	&lt;input type=submit name=send value=Send&gt;
+&lt;/form&gt;
+&lt;?php $unpost-reset(); // optional ?&gt;
 		</code>
 		</pre>
 		</div>		
